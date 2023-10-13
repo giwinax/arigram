@@ -196,7 +196,7 @@ class Controller:
     def quit(self) -> str:
         return "QUIT"
 
-    @bind(msg_handler, ["h"])
+    @bind(msg_handler, ["^D","h"])
     def back(self) -> str:
         return "BACK"
 
@@ -276,7 +276,7 @@ class Controller:
         if self.model.jump_bottom():
             self.render_msgs()
 
-    @bind(msg_handler, ["j"], repeat_factor=True)
+    @bind(msg_handler, ["^B","j"], repeat_factor=True)
     def next_msg(self, repeat_factor: int = 1) -> None:
         if self.model.next_msg(repeat_factor):
             self.render_msgs()
@@ -285,7 +285,7 @@ class Controller:
     def jump_10_msgs_down(self) -> None:
         self.next_msg(10)
 
-    @bind(msg_handler, ["k"], repeat_factor=True)
+    @bind(msg_handler, ["^C","k"], repeat_factor=True)
     def prev_msg(self, repeat_factor: int = 1) -> Optional[bool]:
         if self.model.prev_msg(repeat_factor):
             self.render_msgs()
@@ -617,7 +617,7 @@ class Controller:
             )
         return self._open_msg(msg, cmd)
 
-    @bind(msg_handler, ["l"])
+    @bind(msg_handler, ["^E","l"])
     def open_current_msg(self) -> None:
         """Open msg or file with cmd in mailcap"""
         msg = MsgProxy(self.model.current_msg)
@@ -791,7 +791,7 @@ class Controller:
     def view_contacts(self) -> None:
         self._get_user_ids()
 
-    @bind(chat_handler, ["l"])
+    @bind(chat_handler, ["^E","l"])
     def handle_msgs(self) -> Optional[str]:
         rc = self.handle(msg_handler, 0.2)
         if rc == "QUIT":
@@ -804,13 +804,13 @@ class Controller:
         if self.model.first_chat():
             self.render()
 
-    @bind(chat_handler, ["j"], repeat_factor=True)
+    @bind(chat_handler, ["^B","j"], repeat_factor=True)
     @bind(msg_handler, ["]"])
     def next_chat(self, repeat_factor: int = 1) -> None:
         if self.model.next_chat(repeat_factor):
             self.render()
 
-    @bind(chat_handler, ["k"], repeat_factor=True)
+    @bind(chat_handler, ["^C","k"], repeat_factor=True)
     @bind(msg_handler, ["["])
     def prev_chat(self, repeat_factor: int = 1) -> None:
         if self.model.prev_chat(repeat_factor):
