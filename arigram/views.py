@@ -351,8 +351,8 @@ class MsgView:
 
     def resize(self, rows: int, cols: int, width: int) -> None:
         self.h = rows - 1
-        self.w = width
-        self.x = cols - self.w
+        self.w = width - 5
+        self.x = cols - self.w - 5
         self.win.resize(self.h, self.w)
         self.win.mvwin(0, self.x)
 
