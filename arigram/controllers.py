@@ -905,7 +905,7 @@ class Controller:
         self.view.stdscr.erase()
         self.view.stdscr.noutrefresh()
 
-        chat_width = round(cols * self.chat_size / 2)
+        chat_width = round(cols * self.chat_size / 3)
         msg_width = cols - chat_width
         self.view.chats.resize(rows, cols, chat_width)
         self.view.msgs.resize(rows, cols, msg_width)
