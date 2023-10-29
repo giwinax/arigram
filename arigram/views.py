@@ -402,8 +402,8 @@ class MsgView:
         reply_msg = MsgProxy(_msg)
         if reply_msg_content := self._parse_msg(reply_msg):
             reply_sender = self.model.users.get_user_label(reply_msg.sender_id)
-            sender_name = f" {reply_sender}:" if reply_sender else ""
-            reply_line = f">{sender_name} {reply_msg_content}"
+            sender_name = f"{reply_sender}:" if reply_sender else ""
+            reply_line = f"==>{sender_name} {reply_msg_content}"
             if len(reply_line) >= width_limit:
                 reply_line = f"{reply_line[:width_limit - 4]}..."
             msg = f"{reply_line}\n{msg}"
@@ -496,7 +496,7 @@ class MsgView:
                 label_len = sum(string_len_dwc(e) for e in label_elements)
 
                 msg = self._format_msg(
-                    msg_proxy, width_limit=self.w - label_len - 1
+                    msg_proxy, width_limit=self.w - label_len - 4
                 )
                 elements = *label_elements, f" {msg}"
                 needed_lines = 0
