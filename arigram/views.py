@@ -436,7 +436,8 @@ class MsgView:
             )
         if reply_markup := self._format_reply_markup(msg_proxy):
             msg += reply_markup
-
+        if len(msg) > 151:
+            return msg + "\n"
         return msg
 
     @staticmethod
