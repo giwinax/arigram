@@ -482,7 +482,7 @@ class MsgView:
             for msg_idx, msg_item in msgs[ignore_before:]:
                 is_selected_msg = current_msg_idx == msg_idx
                 msg_proxy = MsgProxy(msg_item)
-                dt = msg_proxy.date.strftime("%H:%M:%S")
+                dt = msg_proxy.date.strftime("%H:%M")
                 user_id_item = msg_proxy.sender_id
 
                 user_id = self.model.users.get_user_label(user_id_item)
