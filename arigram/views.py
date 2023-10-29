@@ -14,6 +14,7 @@ from arigram.colours import (
     reverse,
     white,
     yellow,
+    red,
 )
 from arigram.models import Model, UserModel
 from arigram.msg import MsgProxy
@@ -202,10 +203,10 @@ class ChatView:
         return color
 
     def _unread_color(self, is_selected: bool = False) -> int:
-        color = get_colour(magenta, -1)
+        color = get_colour(red, -1)
         if is_selected:
             return color | reverse
-        return color
+        return color | reverse
 
     def _chat_attributes(
         self, is_selected: bool, title: str, user: Optional[str]
@@ -254,7 +255,7 @@ class ChatView:
 
             for attr, elem in zip(
                 self._chat_attributes(is_selected, title, last_msg_sender),
-                [f"{date[0:5]} ", title],
+                [f"{date[0:5]} ", title[0:14]],
             ):
                 if not elem:
                     continue
