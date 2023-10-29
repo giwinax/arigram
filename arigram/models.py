@@ -854,15 +854,14 @@ class UserModel:
             return ""
         user = self.get_user(user_id)
         if user.get("first_name") and user.get("last_name"):
-            return f'{user["first_name"]} {user["last_name"]}'[:14]
+            return f'{user["first_name"]} {user["last_name"]}'[:22]
 
         if user.get("first_name"):
-            return f'{user["first_name"]}'[:14]
+            return f'{user["first_name"]}'[:22]
 
         if user.get("username"):
             return "@" + user["username"]
         return ""
-
     def get_users(self) -> List[User]:
         contacts = self.get_contacts()
         if contacts is None:
