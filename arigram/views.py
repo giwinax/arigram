@@ -255,7 +255,7 @@ class ChatView:
 
             for attr, elem in zip(
                 self._chat_attributes(is_selected, title, last_msg_sender),
-                [f"{date[0:5]} ", title[0:14]],
+                [f"{date[0:5]} ", title],
             ):
                 if not elem:
                     continue
