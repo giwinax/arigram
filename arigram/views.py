@@ -254,7 +254,7 @@ class ChatView:
 
             for attr, elem in zip(
                 self._chat_attributes(is_selected, title, last_msg_sender),
-                [f"{date[0:5]} ", title[0:14]],
+                [f"{date[0:5]} ", title],
             ):
                 if not elem:
                     continue
@@ -490,7 +490,7 @@ class MsgView:
                 if user_id and flags:
                     # if not channel add space between name and flags
                     flags = f" {flags}"
-                label_elements = f" {dt} ", f"{user_id[0:10]:<10}", flags
+                label_elements = f" {dt} ", user_id, flags
                 label_len = sum(string_len_dwc(e) for e in label_elements)
 
                 msg = self._format_msg(
