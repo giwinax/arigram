@@ -854,10 +854,10 @@ class UserModel:
             return ""
         user = self.get_user(user_id)
         if user.get("first_name") and user.get("last_name"):
-            return f'{user["first_name"]} {user["last_name"]}'[:10]
+            return f'{user["first_name"]} {user["last_name"]}'[:14]
 
         if user.get("first_name"):
-            return f'{user["first_name"]}'[:10]
+            return f'{user["first_name"]}'[:14]
 
         if user.get("username"):
             return "@" + user["username"]
