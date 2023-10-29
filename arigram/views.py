@@ -192,7 +192,7 @@ class ChatView:
         del cols
 
         self.h = rows - 1
-        self.w = width
+        self.w = width - int(width / 3 * 2)
         self.win.resize(self.h, self.w)
 
     def _msg_color(self, is_selected: bool = False) -> int:
@@ -254,7 +254,8 @@ class ChatView:
 
             for attr, elem in zip(
                 self._chat_attributes(is_selected, title, last_msg_sender),
-                [f"{date} ", title, sender_label, f" {last_msg}"],
+                # [f"{date} ", title, sender_label, f" {last_msg}"],
+                [f"{date:<7}", title],
             ):
                 if not elem:
                     continue
@@ -324,9 +325,9 @@ class ChatView:
         if get_chat_type(chat) == ChatType.chatTypeSecret:
             flags.append("secret")
 
-        label = " ".join(config.CHAT_FLAGS.get(flag, flag) for flag in flags)
+        label = "".join(config.CHAT_FLAGS.get(flag, flag) for flag in flags)
         if label:
-            return f" {label}"
+            return f"{label} "
         return label
 
 
@@ -350,7 +351,7 @@ class MsgView:
 
     def resize(self, rows: int, cols: int, width: int) -> None:
         self.h = rows - 1
-        self.w = width
+        self.w = width + int(width * 2 / 3)
         self.x = cols - self.w
         self.win.resize(self.h, self.w)
         self.win.mvwin(0, self.x)
