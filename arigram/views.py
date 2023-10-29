@@ -496,7 +496,7 @@ class MsgView:
                 label_len = sum(string_len_dwc(e) for e in label_elements)
 
                 msg = self._format_msg(
-                    msg_proxy, width_limit=self.w - label_len - 4
+                    msg_proxy, width_limit=self.w - label_len - 1
                 )
                 elements = *label_elements, f" {msg}"
                 needed_lines = 0
