@@ -490,7 +490,7 @@ class MsgView:
                 if user_id and flags:
                     # if not channel add space between name and flags
                     flags = f" {flags}"
-                label_elements = f" {dt} ", user_id, flags
+                label_elements = f" {dt} ", f"{user_id[0:10]:<10}", flags
                 label_len = sum(string_len_dwc(e) for e in label_elements)
 
                 msg = self._format_msg(

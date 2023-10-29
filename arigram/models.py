@@ -861,7 +861,7 @@ class UserModel:
 
         if user.get("username"):
             return "@" + user["username"]
-        return "<Unknown>"
+        return ""
 
     def get_users(self) -> List[User]:
         contacts = self.get_contacts()
